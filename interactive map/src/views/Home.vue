@@ -14,6 +14,7 @@
       />
     </form>
     <button @click="updated">I want these locations</button>
+    <button @click="remove">Remove all locations</button>
   </div>
 
   <ul class="list-container">
@@ -83,6 +84,11 @@ export default {
       const addnew = this.search.filter((el) => el.checked === true);
       const newArr = this.results.concat(addnew);
       this.results = newArr.filter((el) => el.checked !== false);
+    },
+    remove() {
+      this.results = [];
+      this.lat = "";
+      this.long = "";
     },
   },
 };
