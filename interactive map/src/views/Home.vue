@@ -81,7 +81,8 @@ export default {
     },
     updated() {
       const addnew = this.search.filter((el) => el.checked === true);
-      this.results = this.results.concat(addnew);
+      const newArr = this.results.concat(addnew);
+      this.results = newArr.filter((el) => el.checked !== false);
     },
   },
 };

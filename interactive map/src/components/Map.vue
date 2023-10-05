@@ -1,6 +1,6 @@
 <template>
   <div class="tag" v-for="(el, i) in search" :key="el.location">
-    <p @click="unchecked(el)">{{ el.location }}</p>
+    <p @click.prevent="unchecked(el)">{{ el.location }}</p>
   </div>
   <div>
     <l-map class="map" v-model:zoom="zoom" :center="[lat, long]">
@@ -19,7 +19,6 @@
 <script type="ts">
 import { LMap, LTileLayer,LMarker, LIcon} from "@vue-leaflet/vue-leaflet";
 import "leaflet/dist/leaflet.css";
-import {filter} from 'lodash';
 export default {
   name: "Spot",
   components: {
@@ -44,6 +43,7 @@ export default {
   methods:{
     unchecked(el){
       el.checked = false
+      this.filtered = newArr.filter((el) => el.checked !== false);
     }
   }
 
